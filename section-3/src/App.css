@@ -34,10 +34,22 @@ width: 900px;
 margin: auto;
 border-left:none;
 border-right: none;
-margin-top:20px
-
+margin-top:20px;
 }
+
+.listrender{
+margin:auto;
+width:900px;
+text-align: center;
+}
+
+.listrender li{
+list-style: none;
+text-align: justify;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+

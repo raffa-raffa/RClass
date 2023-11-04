@@ -3,6 +3,7 @@ import img1 from "./assets/img1.png"
 import img2 from "./assets/img2.jpg"
 import './App.css';
 import ManageData from './components/ManageData';
+import ListRender from './components/ListRender';
 
 class App extends Component {
   render() {
@@ -18,6 +19,8 @@ class App extends Component {
             <h3>Hook: useState</h3>
           <ManageData/>
           <div className='divisor'></div>
+            <h3>Listas</h3>
+          <ListRender/>
         </div>
     );
   }
