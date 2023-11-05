@@ -4,6 +4,7 @@ import img2 from "./assets/img2.jpg"
 import './App.css';
 import ManageData from './components/ManageData';
 import ListRender from './components/ListRender';
+import ConditionalRender from './components/ConditionalRender';
 
 class App extends Component {
   render() {
@@ -20,7 +21,11 @@ class App extends Component {
           <ManageData/>
           <div className='divisor'></div>
             <h3>Listas</h3>
+          <div className='divisor'></div>
           <ListRender/>
+          <div className='divisor'></div>
+          <h3>Conditional</h3>
+          <ConditionalRender/>
         </div>
     );
   }
