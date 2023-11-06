@@ -37,13 +37,13 @@ border-right: none;
 margin-top:20px;
 }
 
-.listrender{
+.listrender, .moviedetails{
 margin:auto;
 width:900px;
 text-align: center;
 }
 
-.listrender li{
+li{
 list-style: none;
 text-align: justify;
 }
