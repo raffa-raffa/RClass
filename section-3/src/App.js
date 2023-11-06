@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState} from 'react';
 import img1 from "./assets/img1.png"
 import img2 from "./assets/img2.jpg"
 import './App.css';
@@ -7,9 +7,14 @@ import ListRender from './components/ListRender';
 import ConditionalRender from './components/ConditionalRender';
 import ShowUserName from './components/ShowUserName';
 import MovieDatails from './components/MovieDatails';
+import MyFragment from './components/MyFragment';
+import Container from './components/Container'
+import ExecuteFunction from './components/ExecuteFunction';
+import Message from './components/Message';
+import ChangeMessageState from './components/ChangeMessageState';
 
-class App extends Component {
-  render() {
+function App(){
+
     const name = "Dianna"
 
     const movies = [
@@ -24,6 +29,17 @@ class App extends Component {
       { id: 9, name: "Piratas do Caribe: a Vigança de Salazar", ano: "2017", genero: "Aventura"},
       { id: 10, name: "Amahecer part 2", ano: "2012", genero: "Romance"},
   ]
+  
+  const [message, setMessage] = useState("")
+  
+  function showMessage(){
+  setMessage("oi")
+  console.log("Evento componente Pai")}
+
+
+  const handleMessage = (msg) => {
+    setMessage(msg)}
+
     return (
       <div className="App">
           <h1>Seção 3</h1>
@@ -55,10 +71,25 @@ class App extends Component {
           <MovieDatails className="listmovie" name="A Origem" ano={2010} genero="Sci-fi" newMovie={false}/>
           {/*loop em array de objetos*/}
           {movies.map((movie)=>(
-            <MovieDatails name={movie.name} ano={movie.ano} genero={movie.genero}/>))}
+            <MovieDatails key={movie.id} name={movie.name} ano={movie.ano} genero={movie.genero}/>))}
+            {/*Fragment*/}
+          <div className='divisor'></div>
+            <h3>Fragment</h3>
+          <MyFragment propFragment="teste"/>
+            {/*Children e função como prop*/}
+            <div className='divisor'></div>
+            <h3>Container</h3>
+          <Container myValue="test1"><p>Este é o conteúdo </p></Container>
+          <Container myValue="test2"><p>Testando conteúdo </p></Container>
+            {/*Elevação de state*/}
+            <div className='divisor'></div>
+            <h3>Elevação de state</h3>
+            <ExecuteFunction myFunction={showMessage}/>
+            <Message msg={message} /> 
+            <ChangeMessageState handleMessage={handleMessage}/>
         </div>
     );
   }
-}
+
 
 export default App;
