@@ -37,7 +37,7 @@ border-right: none;
 margin-top:20px;
 }
 
-.listrender, .moviedetails{
+.listrender, .moviedetails, .userlist{
 margin:auto;
 width:900px;
 text-align: center;

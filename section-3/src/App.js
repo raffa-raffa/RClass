@@ -1,4 +1,4 @@
-import React, { Component, useState} from 'react';
+import React, { useState} from 'react';
 import img1 from "./assets/img1.png"
 import img2 from "./assets/img2.jpg"
 import './App.css';
@@ -12,6 +12,7 @@ import Container from './components/Container'
 import ExecuteFunction from './components/ExecuteFunction';
 import Message from './components/Message';
 import ChangeMessageState from './components/ChangeMessageState';
+import UserListRender from './components/UserListRender'
 
 function App(){
 
@@ -39,6 +40,13 @@ function App(){
 
   const handleMessage = (msg) => {
     setMessage(msg)}
+  
+    const userList= [
+    { id: 1, name: "Bradock", age: 26, profession: "Medico" },
+    { id: 2, name: "Brianna", age: 23, profession: "Bióloga" },
+    { id: 3, name: "Darth", age: 13, profession: "Programador" },
+    { id: 4, name: "Shakira", age: 12, profession: "Estudante" }
+    ]
 
     return (
       <div className="App">
@@ -87,6 +95,11 @@ function App(){
             <ExecuteFunction myFunction={showMessage}/>
             <Message msg={message} /> 
             <ChangeMessageState handleMessage={handleMessage}/>
+            {/*Challenge 4*/}
+            <div className='divisor'></div>
+            <h3>Lista de Usuários</h3>
+            {userList.map((user)=>(
+          <UserListRender key={user.id} name={user.name} age={user.age} profession={user.profession}/>))}
         </div>
     );
   }
