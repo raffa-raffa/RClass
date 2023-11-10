@@ -1,0 +1,12 @@
+.myform{
+margin:0 auto;
+width: 500px;
+}
+
+input[type="submit"]{
+margin-left: 10px;
+background-color: blue;
+border: none;
+padding:4px;
+color:#fff;
+width: 60px;}
