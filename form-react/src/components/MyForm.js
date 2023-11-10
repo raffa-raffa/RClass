@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./MyForm.css"
 const MyForm = ({user}) => {
-    //3 - gerenciamento de dados
     const [name, setName] = useState(user? user.name: '')
     const [email, setEmail] = useState(user? user.email: '')
+    const [bio, setBio] = useState(user? user.bio: '')
+    const [role, setRole] = useState(user? user.role: '')
 
     const handleChange = (e) => {
         setName(e.target.value)
@@ -13,28 +14,36 @@ const MyForm = ({user}) => {
 
     const handleSubmit = (event)=> {
     event.preventDefault();
-    console.log("enviando form" , name, email)}
-
-    console.log(email)
+    console.log("enviando form")
+    console.log(name, email, bio, role)
+    setName("");
+    setEmail("")
+    setBio("")
+    setRole("")}
 
     return(
         <div>
-            {/* 1- criação de form */}
-            <fom onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className="myform">
                     <label htmlFor="name">Nome: </label>
                     <input value={name} type="text" name="name" placeholder="Digite seu Nome" onChange={handleChange}/>
-                    <input id="ipt-submit" type="submit" value="Enviar"  />
                 </div>
-            {/* 1- label envolvendo input */}
             <div className="myform">
             <label>
                 <span>E-mail: </span>
                 <input type="email" value={email} name="email" placeholder="Digite seu Email" onChange={(e)=> setEmail(e.target.value)}/>
             </label>
-                <input type="submit" value="Enviar"/>
             </div>
-            </fom>
+            <div><label><span>Bio:</span><textarea placeholder="Digite aqui" name="Bio" id="" cols="30" rows="10" value={bio} onChange={((e)=> setBio(e.target.value))}></textarea></label>
+            <div><label><span>Função no sistema</span>
+            <select name="role" onChange={(e)=> setRole(e.target.value)} value={role}>
+                <option value="user">User</option> 
+                <option value="editor">Editor</option>
+                <option value="admin">Admin</option>
+            </select>
+            </label></div>
+            <input type="submit" value="Enviar"/></div>
+            </form>
         </div>
         )}
 
