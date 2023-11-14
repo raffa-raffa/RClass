@@ -9,44 +9,64 @@ const SecretWord = () => {
         { word: "Elefante", dica: ": Maior mamífero terrestre" },
     ];
 
-    const wordlist = [{word: " Elefante ", dica: ": Maior mamífero terrestre"},
-    {word: " Astronauta ", dica: ": Pessoa que viaja para o espaço"},
-    {word: " Guitarra ", dica: ": Instrumento musical de cordas"},
-    {word: " Abacaxi ", dica: ": Fruta tropical amarela e espinhosa"},
-    {word: " Esquilo ", dica: ": Roedor fofo com cauda peluda"},
-    {word: " Arco-íris ", dica: ": Fenômeno óptico com várias cores"},
-    {word: " Camaleão ", dica: ": Réptil que muda de cor"},
-    {word: " Violino ", dica: ": Instrumento de cordas tocado com um arco"},
-    {word: " Girassol ", dica: ": Flor amarela que segue o sol"},
-    {word: " Cachoeira ", dica: ": Fluxo de água caindo de uma altura"},
-    {word: " Pinguim ", dica: ": Ave marinha não voadora"},
-    {word: " Chocolate ", dica: ": Doce feito de cacau e açúcar"},
-    {word: " Onda ", dica: ": Movimento de uma superfície da água"},
-    {word: " Futebol ", dica: ": Esporte com uma bola e dois times"},
-    {word: " Cenoura ", dica: ": Vegetal alaranjado e crocante"},
-    {word: " Computador ", dica: ": Dispositivo eletrônico para processamento de dados"},
-    {word: " Piano ", dica: ": Instrumento musical de teclas"},
-    {word: " Floresta ", dica: ": Área extensa coberta por árvores"},
-    {word: " Foguete ", dica: ": Veículo espacial propelido por motores"},
-    {word: " Coruja ", dica: ": Ave noturna de rapina"},
-    {word: " Melancia ", dica: ": Fruta grande com polpa vermelha"},
-    {word: " Inverno ", dica: ": Estação do ano mais fria"},
-    {word: " Bailarina ", dica: ": Pessoa que dança ballet"},
-    {word: " Tesouro ", dica: ": Objeto de valor escondido"},
-    {word: " Sorrir ", dica: ": Expressão facial feliz"},
-    {word: " Travesseiro ", dica: ": Usado para apoiar a cabeça durante o sono"},
-    {word: " Helicóptero ", dica: ": Aeronave com hélices giratórias"},
-    {word: " Biblioteca ", dica: ": Local onde se encontram livros"},
-    {word: " Abraço ", dica: ": Demonstração de carinho com os braços"},
-    {word: " Montanha ", dica: ": Elevação natural e proeminente da Terra"},]
+    const wordlist = [{ word: " Elefante ", dica: ": Maior mamífero terrestre" },
+    { word: " Astronauta ", dica: ": Pessoa que viaja para o espaço" },
+    { word: " Guitarra ", dica: ": Instrumento musical de cordas" },
+    { word: " Abacaxi ", dica: ": Fruta tropical amarela e espinhosa" },
+    { word: " Esquilo ", dica: ": Roedor fofo com cauda peluda" },
+    { word: " Arco-íris ", dica: ": Fenômeno óptico com várias cores" },
+    { word: " Camaleão ", dica: ": Réptil que muda de cor" },
+    { word: " Violino ", dica: ": Instrumento de cordas tocado com um arco" },
+    { word: " Girassol ", dica: ": Flor amarela que segue o sol" },
+    { word: " Cachoeira ", dica: ": Fluxo de água caindo de uma altura" },
+    { word: " Pinguim ", dica: ": Ave marinha não voadora" },
+    { word: " Chocolate ", dica: ": Doce feito de cacau e açúcar" },
+    { word: " Onda ", dica: ": Movimento de uma superfície da água" },
+    { word: " Futebol ", dica: ": Esporte com uma bola e dois times" },
+    { word: " Cenoura ", dica: ": Vegetal alaranjado e crocante" },
+    { word: " Computador ", dica: ": Dispositivo eletrônico para processamento de dados" },
+    { word: " Piano ", dica: ": Instrumento musical de teclas" },
+    { word: " Floresta ", dica: ": Área extensa coberta por árvores" },
+    { word: " Foguete ", dica: ": Veículo espacial propelido por motores" },
+    { word: " Coruja ", dica: ": Ave noturna de rapina" },
+    { word: " Melancia ", dica: ": Fruta grande com polpa vermelha" },
+    { word: " Inverno ", dica: ": Estação do ano mais fria" },
+    { word: " Bailarina ", dica: ": Pessoa que dança ballet" },
+    { word: " Tesouro ", dica: ": Objeto de valor escondido" },
+    { word: " Sorrir ", dica: ": Expressão facial feliz" },
+    { word: " Travesseiro ", dica: ": Usado para apoiar a cabeça durante o sono" },
+    { word: " Helicóptero ", dica: ": Aeronave com hélices giratórias" },
+    { word: " Biblioteca ", dica: ": Local onde se encontram livros" },
+    { word: " Abraço ", dica: ": Demonstração de carinho com os braços" },
+    { word: " Montanha ", dica: ": Elevação natural e proeminente da Terra" },]
 
     console.log(wordlist);
+
+    const checkWord = () => {
+        let testeword = wordsecret[0].word;
+        let arrayDeLetras = testeword.split('');
+        let searchLetter = arrayDeLetras.some((l) => l === letter)
+        if (searchLetter) {
+            console.log('tem essa letra')
+            let showLetter = letter
+            console.log(showLetter, 'showletter')
+        } else {
+            console.log("não tem essa letra")
+        }
+        console.log(searchLetter, 'serch')
+        console.log(letter, 'letter check')
+        console.log(testeword, 'testeword');
+        console.log(arrayDeLetras, 'arrayDeLetras');
+    }
 
     const verifyLetter = () => {
         console.log(letter, "letter");
         setGuessedLetters([...guessedLetters, letter]);
         setLetter("");
+        checkWord()
     };
+
+
 
     const onchangeData = (event) => {
         const maxLength = 1;
