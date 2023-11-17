@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SecretWord.css";
 
 const SecretWord = () => {
     const [letter, setLetter] = useState("");
     const [guessedLetters, setGuessedLetters] = useState([]);
+    const [displayedWord, setDisplayedWord] = useState("");
 
     const wordsecret = [
         { word: "Elefante", dica: ": Maior mamífero terrestre" },
@@ -40,51 +41,52 @@ const SecretWord = () => {
     { word: " Abraço ", dica: ": Demonstração de carinho com os braços" },
     { word: " Montanha ", dica: ": Elevação natural e proeminente da Terra" },]
 
-    console.log(wordlist);
+    
+
 
     const checkWord = () => {
-        let testeword = wordsecret[0].word;
-        let arrayDeLetras = testeword.split('');
-        let searchLetter = arrayDeLetras.some((l) => l === letter)
-        if (searchLetter) {
-            console.log('tem essa letra')
-            let showLetter = letter
-            console.log(showLetter, 'showletter')
-        } else {
-            console.log("não tem essa letra")
-        }
-        console.log(searchLetter, 'serch')
-        console.log(letter, 'letter check')
-        console.log(testeword, 'testeword');
-        console.log(arrayDeLetras, 'arrayDeLetras');
-    }
-
-    const verifyLetter = () => {
-        console.log(letter, "letter");
-        setGuessedLetters([...guessedLetters, letter]);
-        setLetter("");
-        checkWord()
+        let updatedDisplayedWord = currentWord.word
+            .toLowerCase()
+            .split('')
+            .map((l) => (guessedLetters.includes(l) ? l : "_"))
+            .join('');
+        setDisplayedWord(updatedDisplayedWord);
     };
 
-
+    const verifyLetter = () => {
+        const lowercaseLetter = letter.toLowerCase();
+        console.log(lowercaseLetter, "letter");
+        setGuessedLetters([...guessedLetters, lowercaseLetter]);
+        setLetter("");
+    };
 
     const onchangeData = (event) => {
         const maxLength = 1;
-        const value = event.target.value.slice(0, maxLength);
+        const value = event.target.value.slice(0, maxLength).toLowerCase();
         setLetter(value);
     };
+
+    useEffect(() => {
+        checkWord();
+    }, [currentWord, guessedLetters]);
+
+   
 
     return (
         <div>
             <div className="header">
                 <h4>Pontuação: </h4>
                 <h1>Advinhe a Palavra</h1>
-                <h3>Dica sobre a palavra {wordsecret[0].dica} </h3>
+                <h3>Dica sobre a palavra {currentWord.dica} </h3>
                 <p>Você ainda tem: 3 tentativas</p>
             </div>
             <div className="container">
                 <div className="secretword">
-                    <h1>{wordsecret[0].word}</h1>
+                    {displayedWord.split('').map((letter, index) => (
+                        <div key={index} className="letter">
+                            {letter === '_' ? ' ' : letter}
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="footer">
