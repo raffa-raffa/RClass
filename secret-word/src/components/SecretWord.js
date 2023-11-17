@@ -41,8 +41,12 @@ const SecretWord = () => {
     { word: " Abraço ", dica: ": Demonstração de carinho com os braços" },
     { word: " Montanha ", dica: ": Elevação natural e proeminente da Terra" },]
 
-    
+    const getRandomWord = () => {
+        const randomIndex = Math.floor(Math.random() * wordlist.length);
+        return wordlist[randomIndex];
+    };
 
+    const [currentWord, setCurrentWord] = useState(getRandomWord());
 
     const checkWord = () => {
         let updatedDisplayedWord = currentWord.word
@@ -70,7 +74,11 @@ const SecretWord = () => {
         checkWord();
     }, [currentWord, guessedLetters]);
 
-   
+    const handleNewWord = () => {
+        setGuessedLetters([]);
+        setLetter("");
+        setCurrentWord(getRandomWord());
+    };
 
     return (
         <div>
@@ -96,6 +104,7 @@ const SecretWord = () => {
                     <button onClick={verifyLetter}>Jogar</button>
                 </div>
                 <span>Letras já foram utilizadas: {guessedLetters.join(", ")}</span>
+                <button onClick={handleNewWord}>Nova Palavra</button>
             </div>
         </div>
     );
