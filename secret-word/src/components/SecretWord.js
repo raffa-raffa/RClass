@@ -5,10 +5,9 @@ const SecretWord = () => {
     const [letter, setLetter] = useState("");
     const [guessedLetters, setGuessedLetters] = useState([]);
     const [displayedWord, setDisplayedWord] = useState("");
+    const [remainingAttempts, setRemainingAttempts] = useState(3);
+    const [score, setScore] = useState(0);
 
-    const wordsecret = [
-        { word: "Elefante", dica: ": Maior mamífero terrestre" },
-    ];
 
     const wordlist = [{ word: " Elefante ", dica: ": Maior mamífero terrestre" },
     { word: " Astronauta ", dica: ": Pessoa que viaja para o espaço" },
@@ -50,19 +49,30 @@ const SecretWord = () => {
 
     const checkWord = () => {
         let updatedDisplayedWord = currentWord.word
-            .toLowerCase()
-            .split('')
-            .map((l) => (guessedLetters.includes(l) ? l : "_"))
-            .join('');
+        .toLowerCase()
+        .split('')
+        .map((l) => (guessedLetters.includes(l) ? l : "_"))
+        .join('');
         setDisplayedWord(updatedDisplayedWord);
+    };
+
+    const gameattepnts = () => {
+        if (remainingAttempts === 3) {
+            setScore(score + 25);
+        }
     };
 
     const verifyLetter = () => {
         const lowercaseLetter = letter.toLowerCase();
-        console.log(lowercaseLetter, "letter");
+        if (currentWord.word.toLowerCase().includes(lowercaseLetter)) {
+            gameattepnts();
+        } else {
+            setRemainingAttempts(remainingAttempts - 1);
+        }
         setGuessedLetters([...guessedLetters, lowercaseLetter]);
         setLetter("");
     };
+
 
     const onchangeData = (event) => {
         const maxLength = 1;
@@ -71,31 +81,33 @@ const SecretWord = () => {
     };
 
     useEffect(() => {
-        checkWord();
+    checkWord();
     }, [currentWord, guessedLetters]);
 
     const handleNewWord = () => {
         setGuessedLetters([]);
         setLetter("");
+        setScore(0)
+        setRemainingAttempts(3)
         setCurrentWord(getRandomWord());
     };
 
     return (
         <div>
             <div className="header">
-                <h4>Pontuação: </h4>
-                <h1>Advinhe a Palavra</h1>
+                <h4>Pontuação: {score}</h4>
                 <h3>Dica sobre a palavra {currentWord.dica} </h3>
-                <p>Você ainda tem: 3 tentativas</p>
+                <p>Você ainda tem {remainingAttempts} tentativas</p>
             </div>
             <div className="container">
+                {remainingAttempts > 0  &&  score >= 0 ? (
                 <div className="secretword">
                     {displayedWord.split('').map((letter, index) => (
                         <div key={index} className="letter">
                             {letter === '_' ? ' ' : letter}
                         </div>
                     ))}
-                </div>
+                </div>): <h1>Ahh, Não foi dessa vez!  Tente de novo!!!</h1> }
             </div>
             <div className="footer">
                 <p>Tente advinhar uma letra da palavra</p>
@@ -103,8 +115,9 @@ const SecretWord = () => {
                     <input type="text" value={letter} onChange={onchangeData} />
                     <button onClick={verifyLetter}>Jogar</button>
                 </div>
-                <span>Letras já foram utilizadas: {guessedLetters.join(", ")}</span>
-                <button onClick={handleNewWord}>Nova Palavra</button>
+                <span>Letras já foram utilizadas:</span>
+                <span> {guessedLetters.join(", ")}</span>
+                <button className="new-word" onClick={handleNewWord}>Nova Palavra</button>
             </div>
         </div>
     );
