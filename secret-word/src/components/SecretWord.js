@@ -59,16 +59,26 @@
 
         const verifyLetter = () => {
             const lowercaseLetter = letter.toLowerCase();
+        
+            if (!/^[a-zA-ZÀ-ÖØ-öø-ÿÇç]$/.test(lowercaseLetter)) {
+                console.log('Por favor, insira apenas letras.');
+                return;
+            }
+        
+            if (guessedLetters.includes(lowercaseLetter)) {
+                console.log('Você já tentou essa letra. Tente outra.');
+                return;
+            }
+        
             const isCorrect = currentWord.word.toLowerCase().includes(lowercaseLetter);
-
+        
             if (isCorrect) {
                 setScore(score + 25);
             } else {
-                console.log(incorrectLetters, 'incorrect')
                 setRemainingAttempts(remainingAttempts - 1);
-                setIncorrectLetters([...incorrectLetters, lowercaseLetter]); 
-                            }
-
+                setIncorrectLetters([...incorrectLetters, lowercaseLetter]);
+            }
+        
             setGuessedLetters([...guessedLetters, lowercaseLetter]);
             setLetter('');
         };
@@ -133,6 +143,7 @@
                         <button onClick={verifyLetter}>Jogar</button>
                     </div>
                     <span>Letras já foram utilizadas:</span>
+                    <div className="showLetters">
                     {guessedLetters.map((letter, index) => (
             <span
                 key={index}
@@ -141,6 +152,7 @@
                 {letter}
             </span>
         ))}
+        </div>
                     <button className="new-word" onClick={handleNewWord}>Nova Palavra</button>
                 </div>
             </div>
