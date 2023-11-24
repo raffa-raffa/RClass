@@ -17,8 +17,28 @@
     },
     {
       "name": "teste",
-      "price": "10",
+      "price": "13",
       "id": 4
+    },
+    {
+      "name": "teste",
+      "price": "13",
+      "id": 5
+    },
+    {
+      "name": "teste",
+      "price": "13",
+      "id": 6
+    },
+    {
+      "name": "teclado",
+      "price": "300",
+      "id": 7
+    },
+    {
+      "name": "Oi",
+      "price": "1",
+      "id": 8
     }
   ]
 }
