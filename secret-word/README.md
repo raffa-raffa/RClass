@@ -46,3 +46,8 @@ Ao final do jogo, você pode iniciar uma nova rodada clicando no botão "Nova Pa
 
 Se deseja contribuir para a melhoria deste projeto, sinta-se à vontade para criar pull requests. Certifique-se de discutir mudanças significativas através de uma issue antes de realizar alterações.
 
+# Meu Projeto Incrível
+
+Bem-vindo ao meu projeto incrível! Aqui está um vídeo que explica como usar:
+
+![Prévia](./src/assets/secretword.gif)
