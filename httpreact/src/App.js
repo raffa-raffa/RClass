@@ -5,12 +5,12 @@
   const url = "http://localhost:3000/products";
 
   function App() {
-    const [products, setProducts] = useState([]);
+    const [product, setProduct] = useState([]);
     const [price, setPrice] = useState("");
     const [name, setName] = useState("");
 
-    const { data: items } = useFetch(url);
-  console.log(products)
+    const { data: items , httpConfig} = useFetch(url);
+  console.log(product, setProduct)
     console.log(items);
 
     const handleSubmit = async (e) => {
@@ -21,22 +21,26 @@
         price
       };
 
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(product)
-      });
+      // const res = await fetch(url, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   },
+      //   body: JSON.stringify(product)
+      // });
 
-      console.log(res);
+      // console.log(res);
 
-      const addedProduct = await res.json();
-      setProducts((prevProducts) => [...prevProducts, addedProduct]);
+      // const addedProduct = await res.json();
+      // setProducts((prevProducts) => [...prevProducts, addedProduct]);
 
+
+      httpConfig(product, "POST")
       setName("");
       setPrice("");
     };
+
+    console.log(product)
 
     return (
       <div className="App">

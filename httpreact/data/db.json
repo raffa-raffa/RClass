@@ -39,6 +39,11 @@
       "name": "Oi",
       "price": "1",
       "id": 8
+    },
+    {
+      "name": "MOUSE",
+      "price": "12",
+      "id": 9
     }
   ]
 }
