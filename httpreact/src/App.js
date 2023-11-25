@@ -9,7 +9,7 @@
     const [price, setPrice] = useState("");
     const [name, setName] = useState("");
 
-    const { data: items , httpConfig, loading} = useFetch(url);
+    const { data: items , httpConfig, loading, error} = useFetch(url);
   console.log(product, setProduct)
     console.log(items);
 
@@ -47,7 +47,8 @@
         <h1>Lista de Produtos</h1>
         {/*6- loading */}
         {loading && <p>Carregando dados...</p>}
-        {!loading && (<ul>
+        {error && <p>Ops, Aconteceu algum erro ao carregar dados!</p>}
+        {!error && (<ul>
           {items && items.map((product) => (
             <li key={product.id}>{product.name} - R$: {product.price}</li>
           ))}
