@@ -42,12 +42,23 @@ O jogo termina quando o jogador adivinha corretamente a palavra ou excede o núm
 
 Ao final do jogo, você pode iniciar uma nova rodada clicando no botão "Nova Palavra".
 
-### Contribuindo
 
-Se deseja contribuir para a melhoria deste projeto, sinta-se à vontade para criar pull requests. Certifique-se de discutir mudanças significativas através de uma issue antes de realizar alterações.
+## Próximos Passos 
+
+- [ ] Remover input 
+- [ ] Exibir um deck de letras disponíveis
+- [ ] Melhorar exibição de mensagem de Vitória e Derrota
+- [ ] Melhorar exibição de pontuação e tentativas restantes
+- [ ] Alteração no Layout
+- [ ] Adicionar um timer
 
 # Meu Projeto Incrível
 
 Bem-vindo ao meu projeto incrível! Aqui está um vídeo que explica como usar:
 
 ![Prévia](./src/assets/secretword.gif)
+
+
+### Contribuindo
+
+Se deseja contribuir para a melhoria deste projeto, sinta-se à vontade para criar pull requests. Certifique-se de discutir mudanças significativas através de uma issue antes de realizar alterações.
