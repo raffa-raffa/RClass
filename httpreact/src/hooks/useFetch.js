@@ -25,6 +25,8 @@
                 
                 setMethod(method)
             }
+            if(method === "DELETE"){
+            }
             }
 
             useEffect(()=>{

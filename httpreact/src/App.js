@@ -40,6 +40,10 @@
       setPrice("");
     };
 
+
+    const deleteItem = (id) =>{
+      console.log('item deletado', id)
+    }
     console.log(product)
 
     return (
@@ -50,7 +54,8 @@
         {error && <p>Ops, Aconteceu algum erro ao carregar dados!</p>}
         {!error && (<ul>
           {items && items.map((product) => (
-            <li key={product.id}>{product.name} - R$: {product.price}</li>
+            <div className='list-item'><li key={product.id}>{product.name} - R$: {product.price}</li>
+            <button onClick={()=>deleteItem(product.id)}>X</button></div>
           ))}
         </ul>)}
         <div className="add-product">

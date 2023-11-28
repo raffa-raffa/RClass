@@ -53,3 +53,15 @@ form input {
   flex-direction: column;
   margin-bottom: 15px;
 }
+
+.list-item{
+margin:10px auto;
+width: 300px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+justify-items: center}
+
+.list-item li{
+  text-decoration: none;
+  list-style: none;}
