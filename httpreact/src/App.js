@@ -43,6 +43,7 @@
 
     const deleteItem = (id) =>{
       console.log('item deletado', id)
+      httpConfig(id, "DELETE")
     }
     console.log(product)
 

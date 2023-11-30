@@ -11,11 +11,6 @@
       "price": 90
     },
     {
-      "id": 3,
-      "name": "Boné aba reta",
-      "price": 29.9
-    },
-    {
       "name": "teste",
       "price": "13",
       "id": 4
