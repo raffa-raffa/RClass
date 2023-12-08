@@ -13,7 +13,9 @@ const Home = () => {
       {items && items.map((item)=>(
       <li key={item.id}>
         <h2>{item.name}</h2>
+        <p>{item.id}</p>
         <p>R$: {item.price}</p>
+        <Link to={`/Products/${item.id}`}>Detalhes</Link>
       </li>))}</ul></div>
   )
 }
