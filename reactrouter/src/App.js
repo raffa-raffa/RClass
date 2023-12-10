@@ -6,6 +6,7 @@
   import Navbar from './components/Navbar';
   import Product from './pages/Product';
   import Info from './pages/Info';
+  import  NotFound from './pages/NotFound';
   function App(){
       return (
         <div className="App">
@@ -17,6 +18,7 @@
               <Route path="/about" element={<About/>}/>
               <Route path="/products/:id" element={<Product/>}/>
               <Route path="/products/:id/info" element={<Info/>}/>
+              <Route path="*" element={<NotFound/>}/>
             </Routes>
             </BrowserRouter>
           </div>
