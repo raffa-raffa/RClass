@@ -6,7 +6,7 @@
     return (
         <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/">Produtos</NavLink>
+        <NavLink to="/product">Produtos</NavLink>
         <NavLink to="/about">Sobre</NavLink>
         </nav>
     )
