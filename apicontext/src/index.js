@@ -1,15 +1,17 @@
-  import React from 'react';
-  import ReactDOM from 'react-dom';
-  import App from './App';
-  import './index.css';
-  import { CounterContextProvider } from './context/CounterContext';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import './index.css';
+import { CounterContextProvider } from './context/CounterContext'; // Corrija a importação aqui
+import { TitleColorContextProvider } from './context/TitleColorContext'; // Corrija a importação aqui
 
-  ReactDOM.render(
+ReactDOM.render(
   <React.StrictMode>
-
     <CounterContextProvider>
-      <App />
+      <TitleColorContextProvider>
+        <App />
+      </TitleColorContextProvider>
     </CounterContextProvider>
   </React.StrictMode>,
-    document.getElementById('root')
-  );
+  document.getElementById('root')
+);
