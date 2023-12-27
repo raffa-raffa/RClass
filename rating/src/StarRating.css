@@ -1,0 +1,22 @@
+/* StarRating.css */
+
+.StarRating {
+  display: inline-block;
+}
+
+.Star {
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.StarLabel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: #333;
+}
