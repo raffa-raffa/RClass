@@ -18,7 +18,7 @@
               <Route path="/" element={<Home/>}/>
               <Route path="/about" element={<About/>}/>
               <Route path="/login" element={<Login/>}/>
-              <Route path="/register" element={<Register/>}/>
+              <Route path="/cadastrar" element={<Register/>}/>
             </Routes>
           </div>
           </BrowserRouter>
