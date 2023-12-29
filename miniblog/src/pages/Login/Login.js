@@ -4,7 +4,8 @@ const Login = () => {
   return (
     <div className={styles.home}>
     <h2>
-   Login
+
+  Login
    </h2></div>
   )
 }
