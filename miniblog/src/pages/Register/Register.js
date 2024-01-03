@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from "./Register.module.css"
 import { useState } from 'react'
+import { useAuthentication } from '../../hooks/useAuthentication'
+import {db} from "../../firebase/config"
 
 const Register = () => {
   const [displayName, setDisplayName] = useState("")
@@ -8,8 +10,9 @@ const Register = () => {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [error, setError] = useState("")
+  const {createUser, error: authError, loading} = useAuthentication()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
      e.preventDefault()
 
      setError("")
@@ -24,10 +27,14 @@ const Register = () => {
   setError("As senhas precisam ser iguais!")
   return
 }
-console.log(user,'user')
+const res = await createUser(user)
+console.log(res)
   }
 
-
+useEffect(()=>{
+  if(authError){
+  setError(authError)}
+})
   return (
     <div className={styles.register}>
     <h1>
@@ -45,8 +52,9 @@ console.log(user,'user')
         <span>Senha:</span>
         <input type="password" name="password" required placeholder="Insira sua Password" value={password} onChange={(e)=> setPassword(e.target.value)}/></label> <label>
         <span>Confirmação de senha:</span>
-        <input type="password" name="Confirmpassword" required placeholder="Confirme sua Password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)}/></label>
-        <button className='btn' >Cadastrar</button>
+        <input type="password" name="ConfirmPassword" required placeholder="Confirme sua Password" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)}/></label>
+       {!loading &&  <button className='btn' >Cadastrar</button>}
+       {loading && <button className='btn' disabled >Aguarde...</button>}
         {error && <p className='error'>{error}</p>}
         </form></div>
   )
