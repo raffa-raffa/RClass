@@ -7,12 +7,13 @@
   import Footer from './components/Footer';
   import Login from './pages/Login/Login';
   import Register from './pages/Register/Register';
-  
+  import { AuthProvider } from './context/AuthContext';
   class App extends Component {
     render() {
       return (
         <div className="App">
-          <BrowserRouter>
+          <AuthProvider>
+            <BrowserRouter>
         <Navbar/>
           <div className="container">
             <Routes>
@@ -23,6 +24,7 @@
             </Routes>
           </div>
           </BrowserRouter>
+            </AuthProvider>
           <Footer/>
           </div>
       );
