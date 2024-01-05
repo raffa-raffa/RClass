@@ -12,8 +12,8 @@ import Register from './pages/Register/Register';
 
 const AppContent = () => {
   const [user, setUser] = useState(undefined);
-  const [auth] = useAuthentication();
-  const loadinguser = user === undefined;
+  const { auth } = useAuthentication();
+  const loadingUser = user === undefined;
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -23,7 +23,7 @@ const AppContent = () => {
     return () => unsubscribe();
   }, [auth]);
 
-  if (loadinguser) {
+  if (loadingUser) {
     return <p>Carregando...</p>;
   }
 
@@ -47,10 +47,4 @@ const AppContent = () => {
   );
 };
 
-class App extends React.Component {
-  render() {
-    return <AppContent />;
-  }
-}
-
-export default App;
+export default AppContent;
