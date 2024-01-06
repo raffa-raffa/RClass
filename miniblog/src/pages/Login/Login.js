@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./Login.module.css"
 const Login = () => {
   return (
-    <div className={styles.home}>
+    <div className={styles.login}>
     <h2>
 
   Login
