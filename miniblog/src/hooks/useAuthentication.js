@@ -99,6 +99,8 @@ export const useAuthentication = () => {
     setLoading(false);
   };
 
+
+
   useEffect(() => {
     return () => setCancelled(true);
   }, []);
