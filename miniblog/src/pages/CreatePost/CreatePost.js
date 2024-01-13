@@ -21,11 +21,19 @@ const CreatePost = () => {
     e.preventDefault();
     setFormEror("");
 
+    try{
+    newURL(image)}catch(error){
+    setFormError("A imagem precisa ser uma URL")}
+
+    const tagsArray = tags.split(",").map((tag)=> tag.trim().toLocaleLowerCase())
+    if(!title || !image || !tags || !body){
+    setFormEror("Por favor, preencha todos os campos!")}
+
     insertDocument({
       title,
       image,
       body,
-      tags,
+      tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
     });
