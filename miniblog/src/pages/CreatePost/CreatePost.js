@@ -14,12 +14,12 @@ const CreatePost = () => {
   const [image, setImage] = useState("");
   const [body, setBody] = useState("");
   const [tags, setTags] = useState("");
-  const [formError, setFormEror] = useState("");
+  const [formError, setFormError] = useState("");
   const [insertDocument, response] = useInsertDocument("posts");
-  
+  const  navigate = useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormEror("");
+    setFormError("");
 
     try{
     newURL(image)}catch(error){
@@ -37,6 +37,7 @@ const CreatePost = () => {
       uid: user.uid,
       createdBy: user.displayName,
     });
+    navigate("/")
   };
 
 
