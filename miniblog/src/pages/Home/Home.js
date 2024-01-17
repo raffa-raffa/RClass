@@ -26,7 +26,7 @@ const Home = () => {
               <p>Não foram encontrados posts</p>
               <Link to="/posts/create" className='btn'>criar primeiro post</Link>
             </div>)}
-        </div>
+        </div> 
         </div>
 
   )
